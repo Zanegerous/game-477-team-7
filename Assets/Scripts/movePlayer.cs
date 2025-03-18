@@ -18,12 +18,8 @@ public class movePlayer : MonoBehaviour
     {
         handleInput();
         constrainPlayer();
-        
-        
         // Position Player
         transform.position = new Vector3(startingXPos + xOffset, yOffset, 0f);
-
-       
     }
 
     void handleInput()
@@ -38,14 +34,15 @@ public class movePlayer : MonoBehaviour
 
         // Check for firing
         shooting = playerControls.Player.Fire.ReadValue<float>();
-        
+
     }
 
-    void constrainPlayer(){
+    void constrainPlayer()
+    {
         xOffset = Mathf.Clamp(xOffset, -1.88f, 3.5f);
         yOffset = Mathf.Clamp(yOffset, -4f, 4f);
     }
-    
+
     void Awake()
     {
         playerControls = new PlayerControls();
