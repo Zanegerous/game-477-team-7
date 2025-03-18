@@ -43,7 +43,7 @@ public class spaceshipScript : MonoBehaviour
     void syncWithMovementScript(){
         moveScript.verticalSpeed = verticalSpeed;
         moveScript.horizontalSpeed = horizontalSpeed;
-        firing = moveScript.shooting == 1;
+        firing = !Cursor.visible && (moveScript.shooting == 1);
     }
 
     void shootBullets(){
