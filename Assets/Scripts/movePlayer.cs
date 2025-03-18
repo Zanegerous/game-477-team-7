@@ -3,8 +3,10 @@ using UnityEngine;
 public class movePlayer : MonoBehaviour
 {
     private PlayerControls playerControls;
+    private gameHandler gameHandler;
 
     [Header("Movement")]
+    public bool canMove;
     public float startingXPos;
     public float xOffset = 0f;
     public float yOffset = 0f;
@@ -14,9 +16,18 @@ public class movePlayer : MonoBehaviour
     [Header("Attack Input")]
     public float shooting;
 
-    void Update()
+
+    void Start()
     {
-        handleInput();
+        gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
+    }
+
+
+    void Update()
+    {   
+        canMove = !gameHandler.gamePaused;
+
+        if (canMove) handleInput();
         constrainPlayer();
         
         
@@ -43,7 +54,7 @@ public class movePlayer : MonoBehaviour
 
     void constrainPlayer(){
         xOffset = Mathf.Clamp(xOffset, -1.88f, 3.5f);
-        yOffset = Mathf.Clamp(yOffset, -4f, 4f);
+        yOffset = Mathf.Clamp(yOffset, -3.870537f, 4f);
     }
     
     void Awake()
