@@ -34,13 +34,13 @@ public class movePlayer : MonoBehaviour
         constrainPlayer();
 
         
-        yOffset += verticalSpeed * Mathf.Sin(noseAngle * Mathf.PI / 180f) * Time.deltaTime;
         noseAngle = Mathf.Lerp(noseAngle, 0f, Time.deltaTime * smoothingSensitivity);
+        yOffset += verticalSpeed * Mathf.Sin(noseAngle * Mathf.PI / 180f) * Time.deltaTime;
         
         
         // Position Player
         transform.position = new Vector3(startingXPos + xOffset, yOffset, 0f);
-        transform.localEulerAngles = new Vector3(0f, 0f, noseAngle);
+        transform.localEulerAngles = new Vector3(0f, 0f, noseAngle/2f);
        
     }
 
@@ -51,7 +51,13 @@ public class movePlayer : MonoBehaviour
 
         float xMovement = movementInput[0];
         float yMovement = movementInput[1];
-        float xScale = xMovement > 0f ? 1f : 8f;
+
+        if (!canMove){
+            xMovement = 0f;
+            yMovement = 0f;
+        }
+
+        float xScale = xMovement > 0f ? 1f : 5f; // Move five times faster left than right
 
         xOffset += xMovement * horizontalSpeed * Time.deltaTime * xScale;
         // yOffset += yMovement * verticalSpeed * Time.deltaTime;

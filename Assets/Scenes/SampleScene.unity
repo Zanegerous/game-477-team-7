@@ -2062,10 +2062,10 @@ MonoBehaviour:
   xOffset: -1
   yOffset: 0
   noseAngle: 0
-  smoothingSensitivity: 1.5
+  smoothingSensitivity: 2.5
   verticalSpeed: 1
   horizontalSpeed: 0
-  turningSpeed: 150
+  turningSpeed: 180
   shooting: 0
 --- !u!114 &1628360715
 MonoBehaviour:
@@ -2081,10 +2081,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firing: 0
   bullet: {fileID: 7678499209715942702, guid: 556709bd4e3cf9640ade4632a268c640, type: 3}
-  scraps: 10000
+  scraps: 100000
   speedMult: 1
   canMove: 0
-  verticalSpeed: 5
+  verticalSpeed: 2.4
   horizontalSpeed: 0.6
   attackSpeed: 0.5
   bulletSpeed: 10
