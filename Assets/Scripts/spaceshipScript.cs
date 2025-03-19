@@ -3,6 +3,7 @@ using UnityEngine;
 public class spaceshipScript : MonoBehaviour
 {      
     
+
     [Header("General")]
     public bool firing;
     public GameObject bullet;
@@ -27,18 +28,20 @@ public class spaceshipScript : MonoBehaviour
     public float defense = 1f;
 
     [Header("Upgrades")]
-    int currentAttackSpeedUpgradeCost = 100;
+    public int currentAttackSpeedUpgradeCost = 100;
 
 
 
     public float timeOfLastBullet;
     private movePlayer moveScript;
+    private gameHandler gameHandler;
 
     void Start()
     {
         moveScript = GetComponent<movePlayer>();
         timeOfLastBullet = Time.time;
-
+        
+        gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
     }
 
     void Update()
@@ -77,10 +80,9 @@ public class spaceshipScript : MonoBehaviour
         {
             scraps -= currentAttackSpeedUpgradeCost;
             attackSpeed /= 1.1f;
-            // return attackSpeed.ToString("F2") + " -> " + (attackSpeed/1.1f).ToString("F2");
+            gameHandler.updateAttackSpeedCost();
         }
     
-        // return "Not Set Up";
 
 
 

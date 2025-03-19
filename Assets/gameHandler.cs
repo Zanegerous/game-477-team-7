@@ -9,18 +9,24 @@ public class gameHandler : MonoBehaviour
 {
 
     public bool gamePaused;
-    public GameObject shopPanel;
     public spaceshipScript shipScript;
     public int shipScraps;
-    public TextMeshProUGUI statsText;
 
-    // Start is called before the first frame update
+    [Header("UI Stuff")]
+    public TextMeshProUGUI statsText;
+    public GameObject helpText;
+    public GameObject shopPanel;
+    public TextMeshProUGUI attackSpeedCost;
+    public TextMeshProUGUI attackSpeedText;
+
+
     void Start()
     {
         Application.targetFrameRate = 300;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        updateAttackSpeedCost();
     }
 
     // Update is called once per frame
@@ -66,6 +72,7 @@ public class gameHandler : MonoBehaviour
         }
 
         shopPanel.SetActive(Cursor.visible);
+        helpText.SetActive(!shopPanel.activeInHierarchy);
         gamePaused = shopPanel.activeInHierarchy;
         // Time.timeScale = shopPanel.activeInHierarchy ? 0f : 1f;
     }
@@ -81,5 +88,11 @@ public class gameHandler : MonoBehaviour
         statsText.text = "Scraps: " + shipScraps.ToString();
     }
 
+    public void updateAttackSpeedCost(){
+        shipScript.currentAttackSpeedUpgradeCost += 100;
+        attackSpeedCost.text = "$" + shipScript.currentAttackSpeedUpgradeCost;
+        attackSpeedText.text = shipScript.attackSpeed.ToString("F2") + " -> " + (shipScript.attackSpeed/1.1f).ToString("F2");
+        
+    }
 
 }
