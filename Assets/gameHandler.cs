@@ -18,6 +18,8 @@ public class gameHandler : MonoBehaviour
     public GameObject shopPanel;
     public TextMeshProUGUI attackSpeedCost;
     public TextMeshProUGUI attackSpeedText;
+    public TextMeshProUGUI ShipSpeedCost;
+    public TextMeshProUGUI ShipSpeedText;
 
 
     void Start()
@@ -27,6 +29,7 @@ public class gameHandler : MonoBehaviour
         Cursor.visible = false;
 
         updateAttackSpeedCost();
+        updateShipSpeedCost();
     }
 
     // Update is called once per frame
@@ -88,11 +91,16 @@ public class gameHandler : MonoBehaviour
         statsText.text = "Scraps: " + shipScraps.ToString();
     }
 
+    //  VVVVV WILL NEED TO BE DUPLICATED FOR MORE UPGRADES VVVVV
+
     public void updateAttackSpeedCost(){
-        shipScript.currentAttackSpeedUpgradeCost += 100;
         attackSpeedCost.text = "$" + shipScript.currentAttackSpeedUpgradeCost;
         attackSpeedText.text = shipScript.attackSpeed.ToString("F2") + " -> " + (shipScript.attackSpeed/1.1f).ToString("F2");
-        
+    }
+
+    public void updateShipSpeedCost(){
+        ShipSpeedCost.text = "$" + shipScript.currentShipSpeedUpgradeCost;
+        ShipSpeedText.text = shipScript.speedMult.ToString("F2") + " -> " + (shipScript.speedMult+0.1f).ToString("F2");
     }
 
 }

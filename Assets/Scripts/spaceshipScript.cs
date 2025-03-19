@@ -11,9 +11,10 @@ public class spaceshipScript : MonoBehaviour
 
 
     [Header("Movement Settings")]
+    public float speedMult = 1;
     public bool canMove;
-    public float verticalSpeed = 1f;
-    public float horizontalSpeed = 0.2f;
+    public float verticalSpeed = 1f; float initialVerticalSpeed;
+    public float horizontalSpeed = 0.2f; float initialHorizontalSpeed;
 
 
     [Header("Attack Settings")]
@@ -29,6 +30,7 @@ public class spaceshipScript : MonoBehaviour
 
     [Header("Upgrades")]
     public int currentAttackSpeedUpgradeCost = 100;
+    public int currentShipSpeedUpgradeCost = 50;
 
 
 
@@ -40,8 +42,11 @@ public class spaceshipScript : MonoBehaviour
     {
         moveScript = GetComponent<movePlayer>();
         timeOfLastBullet = Time.time;
+        initialVerticalSpeed = verticalSpeed;
+        initialHorizontalSpeed = horizontalSpeed;
         
         gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
+        
     }
 
     void Update()
@@ -76,15 +81,25 @@ public class spaceshipScript : MonoBehaviour
 
     public void upgradeAttackSpeed(){
         
-        if (scraps >= currentAttackSpeedUpgradeCost)
-        {
+        if (scraps >= currentAttackSpeedUpgradeCost) {
             scraps -= currentAttackSpeedUpgradeCost;
+            currentAttackSpeedUpgradeCost += 100;
             attackSpeed /= 1.1f;
             gameHandler.updateAttackSpeedCost();
         }
-    
+    }
 
+    public void upgradeShipSpeed(){
+        
+        if (scraps >= currentShipSpeedUpgradeCost) {
+            scraps -= currentShipSpeedUpgradeCost;
+            currentShipSpeedUpgradeCost += 25;
+            speedMult += 0.1f;
 
+            verticalSpeed = initialVerticalSpeed * speedMult;
+            horizontalSpeed = initialHorizontalSpeed * speedMult;
 
+            gameHandler.updateShipSpeedCost();
+        }
     }
 }
