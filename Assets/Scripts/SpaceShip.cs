@@ -73,7 +73,7 @@ public class SpaceShip : MonoBehaviour
     void shoot()
     {
         GameObject newBullet = Instantiate(bullet, transform.Find("Barrel").position, transform.Find("Barrel").rotation);
-        newBullet.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
+        newBullet.GetComponent<bulletScript>().bulletSpeed = bulletSpeed;
 
         timeOfLastBullet = Time.time;
     }

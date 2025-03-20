@@ -2089,14 +2089,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  flyingVertically: 0
   startingXPos: -6.22
   xOffset: -1
   yOffset: 0
   noseAngle: 0
-  smoothingSensitivity: 2.5
   verticalSpeed: 1
   horizontalSpeed: 0
-  turningSpeed: 180
+  turningSpeed: 220
+  smoothingSensitivity: 3
   shooting: 0
 --- !u!114 &1628360715
 MonoBehaviour:
@@ -2115,7 +2116,7 @@ MonoBehaviour:
   scraps: 100000
   speedMult: 1
   canMove: 0
-  verticalSpeed: 2.4
+  verticalSpeed: 3
   horizontalSpeed: 0.6
   attackSpeed: 0.5
   bulletSpeed: 10
@@ -2574,6 +2575,14 @@ PrefabInstance:
     - target: {fileID: 5376459077536329731, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390413081865689065, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
+      propertyPath: left
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390413081865689065, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
+      propertyPath: fireRate
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7081861906511249415, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
       propertyPath: m_Name
