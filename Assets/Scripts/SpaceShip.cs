@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class spaceshipScript : MonoBehaviour
-{      
-    
+public class SpaceShip : MonoBehaviour
+{
+
 
     [Header("General")]
     public bool firing;
@@ -44,9 +44,9 @@ public class spaceshipScript : MonoBehaviour
         timeOfLastBullet = Time.time;
         initialVerticalSpeed = verticalSpeed;
         initialHorizontalSpeed = horizontalSpeed;
-        
+
         gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
-        
+
     }
 
     void Update()
@@ -55,22 +55,25 @@ public class spaceshipScript : MonoBehaviour
         shootBullets();
     }
 
-    void syncWithMovementScript(){
+    void syncWithMovementScript()
+    {
         moveScript.verticalSpeed = verticalSpeed;
         moveScript.horizontalSpeed = horizontalSpeed;
         firing = !Cursor.visible && (moveScript.shooting == 1);
         canMove = moveScript.canMove;
     }
 
-    void shootBullets(){
+    void shootBullets()
+    {
         if (firing)
             if (Time.time > timeOfLastBullet + attackSpeed)
                 shoot();
     }
 
-    void shoot(){
+    void shoot()
+    {
         GameObject newBullet = Instantiate(bullet, transform.Find("Barrel").position, transform.Find("Barrel").rotation);
-        newBullet.GetComponent<bulletScript>().bulletSpeed = bulletSpeed;
+        newBullet.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
 
         timeOfLastBullet = Time.time;
     }
@@ -79,9 +82,11 @@ public class spaceshipScript : MonoBehaviour
 
 
 
-    public void upgradeAttackSpeed(){
-        
-        if (scraps >= currentAttackSpeedUpgradeCost) {
+    public void upgradeAttackSpeed()
+    {
+
+        if (scraps >= currentAttackSpeedUpgradeCost)
+        {
             scraps -= currentAttackSpeedUpgradeCost;
             currentAttackSpeedUpgradeCost += 100;
             attackSpeed /= 1.1f;
@@ -89,9 +94,11 @@ public class spaceshipScript : MonoBehaviour
         }
     }
 
-    public void upgradeShipSpeed(){
-        
-        if (scraps >= currentShipSpeedUpgradeCost) {
+    public void upgradeShipSpeed()
+    {
+
+        if (scraps >= currentShipSpeedUpgradeCost)
+        {
             scraps -= currentShipSpeedUpgradeCost;
             currentShipSpeedUpgradeCost += 25;
             speedMult += 0.1f;
@@ -101,5 +108,10 @@ public class spaceshipScript : MonoBehaviour
 
             gameHandler.updateShipSpeedCost();
         }
+    }
+
+    public void DamagePlayer(float damage)
+    {
+
     }
 }

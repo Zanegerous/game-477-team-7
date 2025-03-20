@@ -9,7 +9,7 @@ public class gameHandler : MonoBehaviour
 {
 
     public bool gamePaused;
-    public spaceshipScript shipScript;
+    public SpaceShip shipScript;
     public int shipScraps;
 
     [Header("UI Stuff")]
@@ -41,7 +41,8 @@ public class gameHandler : MonoBehaviour
         displayStatsCorrectly();
     }
 
-    void checkInput(){
+    void checkInput()
+    {
 
         if (Input.GetKeyDown(KeyCode.Escape))
             QuitGame();
@@ -56,9 +57,9 @@ public class gameHandler : MonoBehaviour
     {
         Application.Quit();
 
-        #if UNITY_EDITOR
-                EditorApplication.isPlaying = false;
-        #endif
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#endif
     }
 
     void ToggleCursor()
@@ -83,24 +84,28 @@ public class gameHandler : MonoBehaviour
 
     ////////////////////////////////////////////////////////////
 
-    void syncWithSpaceShipScript(){
+    void syncWithSpaceShipScript()
+    {
         shipScraps = shipScript.scraps;
     }
 
-    void displayStatsCorrectly(){
+    void displayStatsCorrectly()
+    {
         statsText.text = "Scraps: " + shipScraps.ToString();
     }
 
     //  VVVVV WILL NEED TO BE DUPLICATED FOR MORE UPGRADES VVVVV
 
-    public void updateAttackSpeedCost(){
+    public void updateAttackSpeedCost()
+    {
         attackSpeedCost.text = "$" + shipScript.currentAttackSpeedUpgradeCost;
-        attackSpeedText.text = shipScript.attackSpeed.ToString("F2") + " -> " + (shipScript.attackSpeed/1.1f).ToString("F2");
+        attackSpeedText.text = shipScript.attackSpeed.ToString("F2") + " -> " + (shipScript.attackSpeed / 1.1f).ToString("F2");
     }
 
-    public void updateShipSpeedCost(){
+    public void updateShipSpeedCost()
+    {
         ShipSpeedCost.text = "$" + shipScript.currentShipSpeedUpgradeCost;
-        ShipSpeedText.text = shipScript.speedMult.ToString("F2") + " -> " + (shipScript.speedMult+0.1f).ToString("F2");
+        ShipSpeedText.text = shipScript.speedMult.ToString("F2") + " -> " + (shipScript.speedMult + 0.1f).ToString("F2");
     }
 
 }
