@@ -10,7 +10,6 @@ public class WeaponBase : MonoBehaviour
     public float movementSpeed;
     public float fireRate;
 
-    public bool left;
 
     private float startingXPos; // Track the initial position
     private float xOffset = 0f; // Movement over time
@@ -21,10 +20,8 @@ public class WeaponBase : MonoBehaviour
     {
         startingXPos = transform.position.x;
 
-        if (left)
-        {
-            movementSpeed = -movementSpeed;
-        }
+        // if (isEnemy)
+        //     movementSpeed = -movementSpeed;
 
     }
 

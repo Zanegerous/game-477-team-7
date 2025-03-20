@@ -7,6 +7,7 @@ public class EnemyBase : MonoBehaviour
     [Header("Settings")]
     public float health;
     public float speed;
+    public float bulletSpeed;
     public float scoreValue;
 
 
@@ -18,9 +19,7 @@ public class EnemyBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().AddForce(Vector2.left * Random.Range(10f, 50f));
-        Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
-        transform.position = initPos;
+        transform.position = new Vector3(12, Random.Range(-3f, 3f), 0);
         timeOfLastBullet = Time.time;
     }
 
@@ -28,6 +27,12 @@ public class EnemyBase : MonoBehaviour
     void Update()
     {
         fireWeapon(weapon);
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
+
+        // Hurt Player and Delete Ship  
+        if (transform.position.x < -10f)
+            Destroy(gameObject);
+        
 
     }
 
@@ -39,6 +44,7 @@ public class EnemyBase : MonoBehaviour
         {
             timeOfLastBullet = Time.time;
             GameObject newWeapon = Instantiate(weapon, transform.Find("EnemyBarrel").position, transform.Find("EnemyBarrel").rotation);
+            newWeapon.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
         }
     }
 

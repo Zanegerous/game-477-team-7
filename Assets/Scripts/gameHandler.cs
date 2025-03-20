@@ -24,9 +24,9 @@ public class gameHandler : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = 300;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        gamePaused = false;
 
         updateAttackSpeedCost();
         updateShipSpeedCost();
@@ -57,9 +57,9 @@ public class gameHandler : MonoBehaviour
     {
         Application.Quit();
 
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#endif
+        #if UNITY_EDITOR
+                EditorApplication.isPlaying = false;
+        #endif
     }
 
     void ToggleCursor()
@@ -68,6 +68,8 @@ public class gameHandler : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            
+            updateAllCostTexts();
         }
         else if (Cursor.lockState == CursorLockMode.None)
         {
@@ -95,6 +97,11 @@ public class gameHandler : MonoBehaviour
     }
 
     //  VVVVV WILL NEED TO BE DUPLICATED FOR MORE UPGRADES VVVVV
+
+    void updateAllCostTexts(){
+        updateAttackSpeedCost();
+        updateShipSpeedCost();
+    }
 
     public void updateAttackSpeedCost()
     {

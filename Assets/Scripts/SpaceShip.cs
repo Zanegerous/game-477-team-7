@@ -6,7 +6,7 @@ public class SpaceShip : MonoBehaviour
 
     [Header("General")]
     public bool firing;
-    public GameObject bullet;
+    public GameObject currentProjectile;
     public int scraps;
 
 
@@ -18,9 +18,9 @@ public class SpaceShip : MonoBehaviour
 
 
     [Header("Attack Settings")]
+    public float damageMult = 1;
     public float attackSpeed = 0.5f;
     public float bulletSpeed = 10f;
-    public float damage = 1f;
     public int multiShot = 0;
 
 
@@ -44,6 +44,7 @@ public class SpaceShip : MonoBehaviour
         timeOfLastBullet = Time.time;
         initialVerticalSpeed = verticalSpeed;
         initialHorizontalSpeed = horizontalSpeed;
+        attackSpeed = currentProjectile.GetComponent<WeaponBase>().fireRate;
 
         gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
 
@@ -72,8 +73,8 @@ public class SpaceShip : MonoBehaviour
 
     void shoot()
     {
-        GameObject newBullet = Instantiate(bullet, transform.Find("Barrel").position, transform.Find("Barrel").rotation);
-        newBullet.GetComponent<bulletScript>().bulletSpeed = bulletSpeed;
+        GameObject newBullet = Instantiate(currentProjectile, transform.Find("Barrel").position, transform.Find("Barrel").rotation);
+        newBullet.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
 
         timeOfLastBullet = Time.time;
     }
