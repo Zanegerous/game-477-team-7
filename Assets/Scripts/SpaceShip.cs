@@ -60,7 +60,7 @@ public class SpaceShip : MonoBehaviour
     {
         moveScript.verticalSpeed = verticalSpeed;
         moveScript.horizontalSpeed = horizontalSpeed;
-        firing = !Cursor.visible && (moveScript.shooting == 1);
+        firing = (moveScript.shooting == 1);
         canMove = moveScript.canMove;
     }
 
@@ -81,11 +81,8 @@ public class SpaceShip : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
     public void upgradeAttackSpeed()
     {
-
         if (scraps >= currentAttackSpeedUpgradeCost)
         {
             scraps -= currentAttackSpeedUpgradeCost;
@@ -111,8 +108,18 @@ public class SpaceShip : MonoBehaviour
         }
     }
 
-    public void DamagePlayer(float damage)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        WeaponBase collisonObject = collision.GetComponent<WeaponBase>();
+        if (collisonObject != null)
+        {
+            health -= collisonObject.damage;
+            Destroy(collision.gameObject);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                //GameWorld.Instance.AddToScore(scoreValue);
+            }
+        }
     }
 }

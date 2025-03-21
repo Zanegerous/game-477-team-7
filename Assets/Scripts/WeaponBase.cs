@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,8 @@ public class WeaponBase : MonoBehaviour
     public float damage;
     public float movementSpeed;
     public float fireRate;
+    public float spread;
+    private Vector3 direction;
 
 
     private float startingXPos; // Track the initial position
@@ -19,6 +20,7 @@ public class WeaponBase : MonoBehaviour
     void Start()
     {
         startingXPos = transform.position.x;
+        direction = GenerateAngle();
 
         // if (isEnemy)
         //     movementSpeed = -movementSpeed;
@@ -28,16 +30,21 @@ public class WeaponBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position += direction * movementSpeed * Time.deltaTime;
+        CheckPos();
+    }
 
-        Vector3 direction = new Vector3(Mathf.Cos(
-            transform.rotation.eulerAngles.z * Mathf.Deg2Rad),
-            Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad),
+
+    private Vector3 GenerateAngle(){
+        float spreadOffset = Random.Range(-spread, spread);
+        float fireAngle =  (transform.rotation.eulerAngles.z + spreadOffset) * Mathf.Deg2Rad;
+        Vector3 result = new Vector3(
+            Mathf.Cos(fireAngle),
+            Mathf.Sin(fireAngle),
             0f
         );
 
-        transform.position += direction * movementSpeed * Time.deltaTime;
-
-        CheckPos();
+        return result;
     }
 
     private void CheckPos()
