@@ -89,7 +89,7 @@ public class SpaceShip : MonoBehaviour
         if (scraps >= currentAttackSpeedUpgradeCost)
         {
             scraps -= currentAttackSpeedUpgradeCost;
-            currentAttackSpeedUpgradeCost += 100;
+            currentAttackSpeedUpgradeCost += 50;
             attackSpeed /= 1.1f;
             gameHandler.updateAttackSpeedCost();
         }
@@ -101,7 +101,7 @@ public class SpaceShip : MonoBehaviour
         if (scraps >= currentShipSpeedUpgradeCost)
         {
             scraps -= currentShipSpeedUpgradeCost;
-            currentShipSpeedUpgradeCost += 25;
+            currentShipSpeedUpgradeCost += 50;
             speedMult += 0.1f;
 
             verticalSpeed = initialVerticalSpeed * speedMult;

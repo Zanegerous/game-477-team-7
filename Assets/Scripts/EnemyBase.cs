@@ -9,16 +9,19 @@ public class EnemyBase : MonoBehaviour
     public float speed;
     public float bulletSpeed;
     public float scoreValue;
+    public int scrapsOnDeath;
 
 
     [Header("Weapon")]
     public GameObject weapon;
     private float timeOfLastBullet;
 
+    private gameHandler gameHandler;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
         transform.position = new Vector3(12, Random.Range(-3f, 3f), 0);
         timeOfLastBullet = Time.time;
     }
@@ -58,8 +61,11 @@ public class EnemyBase : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+                gameHandler.shipScript.scraps += Mathf.RoundToInt(scrapsOnDeath * Random.Range(0.9f, 1.3f));
+                
                 //GameWorld.Instance.AddToScore(scoreValue);
             }
         }
     }
+
 }

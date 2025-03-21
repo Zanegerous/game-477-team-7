@@ -41,7 +41,7 @@ public class movePlayer : MonoBehaviour
         
         // Position Player
         transform.position = new Vector3(startingXPos + xOffset, yOffset, 0f);
-        transform.localEulerAngles = new Vector3(0f, 0f, noseAngle/2f);
+        transform.localEulerAngles = new Vector3(0f, 0f, noseAngle/3f);
        
     }
 

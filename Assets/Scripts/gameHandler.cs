@@ -80,7 +80,7 @@ public class gameHandler : MonoBehaviour
         shopPanel.SetActive(Cursor.visible);
         helpText.SetActive(!shopPanel.activeInHierarchy);
         gamePaused = shopPanel.activeInHierarchy;
-        // Time.timeScale = shopPanel.activeInHierarchy ? 0f : 1f;
+        Time.timeScale = shopPanel.activeInHierarchy ? 0f : 1f;
     }
 
 
