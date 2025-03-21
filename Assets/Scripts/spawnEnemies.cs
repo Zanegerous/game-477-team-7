@@ -30,13 +30,13 @@ public class spawnEnemies : MonoBehaviour
     void Start()
     {
         spawnQueue.Add(new SpawnData(4f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(8f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(12f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(20f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(23f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(25f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(28f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(28f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(9f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(13f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(22f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(27f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(31f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(36f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(36f, "Enemy 1"));
 
     }
 
