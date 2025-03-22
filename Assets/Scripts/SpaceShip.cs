@@ -37,6 +37,7 @@ public class SpaceShip : MonoBehaviour
     public float timeOfLastBullet;
     private movePlayer moveScript;
     private gameHandler gameHandler;
+    public healthBar playerHealth;      // in progress
 
     void Start()
     {
@@ -54,6 +55,7 @@ public class SpaceShip : MonoBehaviour
     {
         syncWithMovementScript();
         shootBullets();
+        checkForDamage();           // in progress
     }
 
     void syncWithMovementScript()
@@ -77,6 +79,16 @@ public class SpaceShip : MonoBehaviour
         newBullet.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
 
         timeOfLastBullet = Time.time;
+    }
+
+    public void checkForDamage() {
+        // if enemy.projectile.collider == player.collider
+            // playerHealth.decrementHealthBar();
+    }
+
+    public void checkForHealthPotion() {
+        // if potion.projectile.collider == player.collider
+            // playerHealth.incrementHealthBar();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
