@@ -25,7 +25,7 @@ public class SpaceShip : MonoBehaviour
 
 
     [Header("Defense Settings")]
-    public float health = 100f;
+    //public float health = 100f;       health is now stored in playerHealthBar.fullHealth
     public float defense = 1f;
 
     [Header("Upgrades")]
@@ -37,7 +37,7 @@ public class SpaceShip : MonoBehaviour
     public float timeOfLastBullet;
     private movePlayer moveScript;
     private gameHandler gameHandler;
-    public healthBar playerHealth;      // in progress
+    public healthBar playerHealthBar;
 
     void Start()
     {
@@ -49,13 +49,14 @@ public class SpaceShip : MonoBehaviour
 
         gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
 
+        playerHealthBar = GameObject.Find("Bar").GetComponent<healthBar>();
+
     }
 
     void Update()
     {
         syncWithMovementScript();
         shootBullets();
-        checkForDamage();           // in progress
     }
 
     void syncWithMovementScript()
@@ -79,16 +80,6 @@ public class SpaceShip : MonoBehaviour
         newBullet.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
 
         timeOfLastBullet = Time.time;
-    }
-
-    public void checkForDamage() {
-        // if enemy.projectile.collider == player.collider
-            // playerHealth.decrementHealthBar();
-    }
-
-    public void checkForHealthPotion() {
-        // if potion.projectile.collider == player.collider
-            // playerHealth.incrementHealthBar();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,9 +116,9 @@ public class SpaceShip : MonoBehaviour
         WeaponBase collisonObject = collision.GetComponent<WeaponBase>();
         if (collisonObject != null)
         {
-            health -= collisonObject.damage;
+            playerHealthBar.decrementHealthBar();
             Destroy(collision.gameObject);
-            if (health <= 0)
+            if (playerHealthBar.fullHealth == 0f)
             {
                 Destroy(gameObject);
                 //GameWorld.Instance.AddToScore(scoreValue);

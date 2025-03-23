@@ -5,34 +5,24 @@ using UnityEngine;
 public class healthBar : MonoBehaviour
 {
     public float fullHealth;
-    public float decrementAmount;
-    public float incrementAmount;
+    private float incrementAmount;
+    private Transform barspriteTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        decrementAmount = 0.1f;
         fullHealth = 1f;
-        Transform barSprite = transform.scale.GetComponent<x???>;
-        barSprite = fullHealth;
-        */
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void decrementHealthBar() {
-        // barsprite -= decrementAmount
+        incrementAmount = 0.1f;
+        barspriteTransform = transform;
     }
 
     public void incrementHealthBar() {
-        // if barsprite + incrementAmount >= 100 
-            // barsprite = fullHealth
-        // else
-            // barsprite += incrementAmount
+        fullHealth = Mathf.Min(fullHealth + incrementAmount, 1f);
+        barspriteTransform.localScale = new Vector3(fullHealth, barspriteTransform.localScale.y, barspriteTransform.localScale.z);
+    }
+
+    public void decrementHealthBar() {
+        fullHealth = Mathf.Max(fullHealth - incrementAmount, 0f);
+        barspriteTransform.localScale = new Vector3(fullHealth, barspriteTransform.localScale.y, barspriteTransform.localScale.z);
     }
 }
