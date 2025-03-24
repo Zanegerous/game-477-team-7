@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
     public float bulletSpeed;
     public float scoreValue;
     public int scrapsOnDeath;
+    public bool enemyBullets;
 
 
     [Header("Weapon")]
@@ -48,13 +49,14 @@ public class EnemyBase : MonoBehaviour
             timeOfLastBullet = Time.time;
             GameObject newWeapon = Instantiate(weapon, transform.Find("EnemyBarrel").position, transform.Find("EnemyBarrel").rotation);
             newWeapon.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
+            if (enemyBullets) newWeapon.tag = "Enemy";
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         WeaponBase collisonObject = collision.GetComponent<WeaponBase>();
-        if (collisonObject != null)
+        if (collisonObject != null && collisonObject.tag != "Enemy")
         {
             Destroy(collision.gameObject);
             health -= collisonObject.damage;

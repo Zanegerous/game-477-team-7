@@ -135,7 +135,8 @@ MonoBehaviour:
   speed: 1.8
   bulletSpeed: 10
   scoreValue: 100
-  scrapsOnDeath: 50
+  scrapsOnDeath: 80
+  enemyBullets: 1
   weapon: {fileID: 7081861906511249415, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
 --- !u!50 &852799699040492936
 Rigidbody2D:
