@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 354022480018637778}
   - component: {fileID: -7867905599655391321}
   - component: {fileID: -3781183114025260645}
+  - component: {fileID: 1359769074104468245}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -137,10 +138,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   movementSpeed: 30
-  fireRate: 1
+  fireRate: 0.5
   spread: 0
   currentMovementMode: 0
-  trackingTarget: {fileID: 0}
   trackingSpeed: 0
   fireSound: {fileID: 6677904084231636395}
 --- !u!96 &-3781183114025260645
@@ -247,6 +247,33 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!50 &1359769074104468245
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678499209715942702}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.05
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8579620537952143677
 GameObject:
   m_ObjectHideFlags: 0

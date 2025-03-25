@@ -102,10 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   movementSpeed: 30
-  fireRate: 0.5
+  fireRate: 0.15
   spread: 1
   currentMovementMode: 0
-  trackingTarget: {fileID: 0}
   trackingSpeed: 0
   fireSound: {fileID: 303231621871512271}
 --- !u!61 &2845838361240589766

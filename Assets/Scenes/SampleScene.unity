@@ -2300,6 +2300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy1: {fileID: 6576675856665746637, guid: 70f7bf51a0e6b6e439d4638b281a4b97, type: 3}
   enemy2: {fileID: 6576675856665746637, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
+  astroidEnemy: {fileID: 2021697100821590831, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
 --- !u!1 &1121761427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,7 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firing: 0
-  currentProjectile: {fileID: 7081861906511249415, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
+  currentProjectile: {fileID: 7678499209715942702, guid: 556709bd4e3cf9640ade4632a268c640, type: 3}
   scraps: 0
   speedMult: 1
   canMove: 0
