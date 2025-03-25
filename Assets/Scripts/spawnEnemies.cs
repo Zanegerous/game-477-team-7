@@ -21,6 +21,7 @@ public class spawnEnemies : MonoBehaviour
 
     
     public GameObject enemy1;
+    public GameObject enemy2;
 
 
     private List<SpawnData> spawnQueue = new List<SpawnData>();
@@ -31,27 +32,30 @@ public class spawnEnemies : MonoBehaviour
     {
         spawnQueue.Add(new SpawnData(4f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(9f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(13f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(12f, "Enemy 1")); 
         spawnQueue.Add(new SpawnData(18f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(24f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(31f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(39f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(47f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(54f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(60f, "Enemy 1")); // 1 enemy per 6s until now
+
+        spawnQueue.Add(new SpawnData(58f, "Enemy 2")); // First Enemy 2 - Mixed in
 
         // Increase spawn rate
-        spawnQueue.Add(new SpawnData(66f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(71f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(75f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(78f, "Enemy 1"));
+
+        spawnQueue.Add(new SpawnData(73f, "Enemy 2")); // Second Enemy 2 - Mixed in
+
         spawnQueue.Add(new SpawnData(81f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(84f, "Enemy 1")); // 1 enemy per ~3s now
+
+        spawnQueue.Add(new SpawnData(83f, "Enemy 2")); // Third Enemy 2 - Mixed in
+
 
         // Final push - high spawn rate in the last 30s
-        spawnQueue.Add(new SpawnData(87f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(90f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(92f, "Enemy 1"));
+
+        spawnQueue.Add(new SpawnData(91f, "Enemy 2")); // Fourth Enemy 2 - Final one
+
         spawnQueue.Add(new SpawnData(94f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(96f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(98f, "Enemy 1"));
@@ -59,8 +63,7 @@ public class spawnEnemies : MonoBehaviour
         spawnQueue.Add(new SpawnData(102f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(104f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(106f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(108f, "Enemy 1"));
-        spawnQueue.Add(new SpawnData(110f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(108f, "Enemy 2"));
         spawnQueue.Add(new SpawnData(112f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(114f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(116f, "Enemy 1"));
@@ -80,15 +83,19 @@ public class spawnEnemies : MonoBehaviour
                 spawnQueue.RemoveAt(i); // Remove from the list
             }
         }
+
+        if (spawnQueue.Count == 0){
+            GetComponent<gameHandler>().levelCompleted = true;
+        }
     }
 
     void SpawnEnemy(string enemyType)
     {
-        Debug.Log("Spawning: " + enemyType);
+        // Debug.Log("Spawning: " + enemyType);
         if (enemyType == "Enemy 1")
             Instantiate(enemy1);
-        // if (enemyType == "Enemy 2")
-            // Instantiate(enemy2);
+        if (enemyType == "Enemy 2")
+            Instantiate(enemy2);
             
     }
 }

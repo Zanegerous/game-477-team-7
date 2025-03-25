@@ -13,6 +13,7 @@ public class EnemyBase : MonoBehaviour
     public int scrapsOnDeath;
     public bool enemyBullets;
 
+    public float exitDamage;
 
 
 
@@ -53,15 +54,16 @@ public class EnemyBase : MonoBehaviour
     void Update()
     {
         if (weapon != null) // Means no weapon is required
-        {
             fireWeapon(weapon);
-        }
 
         moveMode();
 
         // Hurt Player and Delete Ship  
-        if (transform.position.x < -10f)
+        if (transform.position.x < -10f){
+            trackingTarget.GetComponent<SpaceShip>().playerHealthBar.decrementHealthBar(exitDamage);
+            Debug.Log(19911);
             Destroy(gameObject);
+        }
 
 
     }
@@ -111,20 +113,22 @@ public class EnemyBase : MonoBehaviour
     {
         WeaponBase collisonObject = collision.GetComponent<WeaponBase>();
         if (collisonObject != null && collisonObject.tag != "Enemy")
-        {
+        {   
             Destroy(collision.gameObject);
             health -= collisonObject.damage;
 
             if (healthSlider != null)
             {
                 healthSlider.value = health;
+                if (healthSlider.value < healthSlider.maxValue)
+                    healthSlider.gameObject.SetActive(true);
             }
 
             if (health <= 0)
             {
+                gameHandler.shipScript.scraps += Mathf.RoundToInt(scrapsOnDeath * Random.Range(0.9f, 1.3f)); // give scraps
+                Debug.Log("SCRAPS DEATH");
                 Destroy(gameObject);
-                gameHandler.shipScript.scraps += Mathf.RoundToInt(scrapsOnDeath * Random.Range(0.9f, 1.3f));
-
                 //GameWorld.Instance.AddToScore(scoreValue);
             }
         }

@@ -100,8 +100,11 @@ public class WeaponBase : MonoBehaviour
     private void CheckPos()
     {
         if (Mathf.Abs(transform.position.x - startingXPos) > 20f) // if 20f units off left or right in your screen then delete
-        {
-            Destroy(gameObject);
+        {   
+            if (gameObject.name != "Asteroid"){
+                Debug.Log("ABS VAL DELETE");
+                Destroy(gameObject);
+            }
         }
     }
 

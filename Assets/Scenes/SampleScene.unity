@@ -556,13 +556,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 931541691977754300, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
+      propertyPath: health
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 931541691977754300, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
+      propertyPath: exitDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931541691977754300, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
+      propertyPath: trackingSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2021697100821590831, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
       propertyPath: m_Name
-      value: Astroid
+      value: Asteroid
       objectReference: {fileID: 0}
     - target: {fileID: 2379851811631571068, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.92
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2379851811631571068, guid: 41cf601ae3024de4d9092a4b13024f4d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2206,71 +2218,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067115464}
   m_CullTransparentMesh: 1
---- !u!1001 &1090007238
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.9617335
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793957248692702882, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6541292568338292249, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6541292568338292249, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576675856665746637, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
-      propertyPath: m_Name
-      value: Gatling Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
 --- !u!1 &1097861949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 6576675856665746637, guid: 70f7bf51a0e6b6e439d4638b281a4b97, type: 3}
+  enemy2: {fileID: 6576675856665746637, guid: 90f7bd67ab15aa64391764987a16b64c, type: 3}
 --- !u!1 &1121761427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4693,5 +4641,4 @@ SceneRoots:
   - {fileID: 526600307}
   - {fileID: 1628360712}
   - {fileID: 2057869899}
-  - {fileID: 1090007238}
   - {fileID: 239097664}

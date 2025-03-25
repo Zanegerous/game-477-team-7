@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 2379851811631571068}
   - component: {fileID: 8263631499473794401}
   - component: {fileID: 7366024087821045274}
+  - component: {fileID: 931541691977754300}
   - component: {fileID: 661370443541963411}
   - component: {fileID: 4334839081293841196}
-  - component: {fileID: 931541691977754300}
   m_Layer: 0
-  m_Name: Astroid
+  m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2021697100821590831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.82, y: -1.24, z: 0}
+  m_LocalPosition: {x: 12, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107,6 +107,29 @@ MonoBehaviour:
   currentMovementMode: 0
   trackingTarget: {fileID: 0}
   trackingSpeed: 0
+--- !u!114 &931541691977754300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021697100821590831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3572f7efad4112242a744643db727dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  speed: 0
+  bulletSpeed: 0
+  scrapsOnDeath: 0
+  enemyBullets: 0
+  weapon: {fileID: 0}
+  currentMovementMode: 1
+  trackingSpeed: 3
+  trackingTarget: {fileID: 0}
+  healthSlider: {fileID: 0}
+  exitDamage: 0
 --- !u!50 &661370443541963411
 Rigidbody2D:
   serializedVersion: 4
@@ -179,25 +202,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8828125}
   m_EdgeRadius: 0
---- !u!114 &931541691977754300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021697100821590831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3572f7efad4112242a744643db727dbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  speed: 0
-  bulletSpeed: 0
-  scrapsOnDeath: 0
-  enemyBullets: 0
-  weapon: {fileID: 0}
-  currentMovementMode: 1
-  trackingSpeed: 3
-  trackingTarget: {fileID: 0}
-  healthSlider: {fileID: 0}

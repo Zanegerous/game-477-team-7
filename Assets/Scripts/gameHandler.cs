@@ -11,6 +11,7 @@ public class gameHandler : MonoBehaviour
     public bool gamePaused;
     public SpaceShip shipScript;
     public int shipScraps;
+    public bool levelCompleted = false;
 
     [Header("UI Stuff")]
     public TextMeshProUGUI statsText;
