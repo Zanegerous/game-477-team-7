@@ -51,15 +51,13 @@ public class gameHandler : MonoBehaviour
 
     /////////////////////////////////////////////////////////////  
 
-    void QuitGame()
-    {   // commented out because this functionality is going to be handled by pause UI and buttons
-        /*
+    public void QuitGame()
+    { 
         Application.Quit();
 
         #if UNITY_EDITOR
                 EditorApplication.isPlaying = false;
         #endif
-        */
     }
 
     void ToggleCursor()

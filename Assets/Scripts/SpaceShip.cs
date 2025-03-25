@@ -122,8 +122,13 @@ public class SpaceShip : MonoBehaviour
             Destroy(collision.gameObject);
             if (playerHealthBar.fullHealth == 0f)
             {
+                // destroy ship, load "you lose" panel, unlock cursor
                 Destroy(gameObject);
                 SceneManager.LoadScene("GameOver");
+                if (Cursor.lockState == CursorLockMode.Locked){
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
                 //GameWorld.Instance.AddToScore(scoreValue);
             }
         }
