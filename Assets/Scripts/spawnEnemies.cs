@@ -22,6 +22,7 @@ public class spawnEnemies : MonoBehaviour
     
     public GameObject enemy1;
     public GameObject enemy2;
+    public GameObject astroidEnemy;
 
 
     private List<SpawnData> spawnQueue = new List<SpawnData>();
@@ -38,6 +39,11 @@ public class spawnEnemies : MonoBehaviour
         spawnQueue.Add(new SpawnData(31f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(39f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(47f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(47f, "Astroid"));
+        spawnQueue.Add(new SpawnData(47f, "Astroid"));
+        spawnQueue.Add(new SpawnData(47f, "Astroid"));
+        spawnQueue.Add(new SpawnData(47f, "Astroid"));
+    
 
         spawnQueue.Add(new SpawnData(58f, "Enemy 2")); // First Enemy 2 - Mixed in
 
@@ -49,6 +55,10 @@ public class spawnEnemies : MonoBehaviour
         spawnQueue.Add(new SpawnData(81f, "Enemy 1"));
 
         spawnQueue.Add(new SpawnData(83f, "Enemy 2")); // Third Enemy 2 - Mixed in
+        spawnQueue.Add(new SpawnData(83f, "Astroid"));
+        spawnQueue.Add(new SpawnData(83f, "Astroid"));
+        spawnQueue.Add(new SpawnData(83f, "Astroid"));
+        spawnQueue.Add(new SpawnData(83f, "Astroid"));
 
 
         // Final push - high spawn rate in the last 30s
@@ -68,6 +78,10 @@ public class spawnEnemies : MonoBehaviour
         spawnQueue.Add(new SpawnData(114f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(116f, "Enemy 1"));
         spawnQueue.Add(new SpawnData(118f, "Enemy 1"));
+        spawnQueue.Add(new SpawnData(120f, "Astroid"));
+        spawnQueue.Add(new SpawnData(120f, "Astroid"));
+        spawnQueue.Add(new SpawnData(120f, "Astroid"));
+        spawnQueue.Add(new SpawnData(120f, "Astroid"));
         spawnQueue.Add(new SpawnData(120f, "Enemy 1")); // 1 enemy every ~2s in the last 30s
 
     }
@@ -96,6 +110,8 @@ public class spawnEnemies : MonoBehaviour
             Instantiate(enemy1);
         if (enemyType == "Enemy 2")
             Instantiate(enemy2);
-            
+        if (enemyType == "Astroid")
+            Instantiate(astroidEnemy);
+                
     }
 }

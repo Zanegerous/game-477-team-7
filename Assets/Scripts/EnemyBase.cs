@@ -34,6 +34,7 @@ public class EnemyBase : MonoBehaviour
     {
         MoveForward,
         TrackYPriority,
+        None
     }
 
     // Start is called before the first frame update
@@ -84,6 +85,8 @@ public class EnemyBase : MonoBehaviour
                 break;
             case MovementMode.TrackYPriority:
                 trackPlayerPrioritizeY();
+                break;
+            case MovementMode.None: // movement not handled here or not needed here
                 break;
         }
     }

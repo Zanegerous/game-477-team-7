@@ -104,9 +104,9 @@ MonoBehaviour:
   movementSpeed: -5
   fireRate: 0
   spread: 0
-  currentMovementMode: 0
-  trackingTarget: {fileID: 0}
-  trackingSpeed: 0
+  currentMovementMode: 1
+  trackingSpeed: 1
+  fireSound: {fileID: 0}
 --- !u!114 &931541691977754300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,12 +124,13 @@ MonoBehaviour:
   bulletSpeed: 0
   scrapsOnDeath: 0
   enemyBullets: 0
+  exitDamage: 0
   weapon: {fileID: 0}
-  currentMovementMode: 1
+  currentMovementMode: 2
   trackingSpeed: 3
   trackingTarget: {fileID: 0}
   healthSlider: {fileID: 0}
-  exitDamage: 0
+  deathSound: {fileID: 0}
 --- !u!50 &661370443541963411
 Rigidbody2D:
   serializedVersion: 4

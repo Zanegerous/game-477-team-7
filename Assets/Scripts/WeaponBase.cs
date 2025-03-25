@@ -16,7 +16,7 @@ public class WeaponBase : MonoBehaviour
 
     [Header("Weapon Modifiers")]
     public MovementMode currentMovementMode;
-    public GameObject trackingTarget;
+    private GameObject trackingTarget;
     public float trackingSpeed;
 
     [Header("Assets")]
@@ -25,8 +25,8 @@ public class WeaponBase : MonoBehaviour
     public enum MovementMode
     {
         MoveForward,
-        TrackYPriority,
-        ConstantTracking
+        ConstantTracking,
+        None
     }
 
 
@@ -39,6 +39,7 @@ public class WeaponBase : MonoBehaviour
     {
         startingXPos = transform.position.x;
         direction = GenerateAngle();
+        trackingTarget = GameObject.FindGameObjectWithTag("Player");
 
 
         // if (isEnemy)
@@ -60,11 +61,10 @@ public class WeaponBase : MonoBehaviour
             case MovementMode.MoveForward:
                 moveForward();
                 break;
-            case MovementMode.TrackYPriority:
-                trackPlayerPrioritizeY();
-                break;
             case MovementMode.ConstantTracking:
                 trackPlayerConstant();
+                break;
+            case MovementMode.None: // movement not handled here or not needed here
                 break;
         }
     }
