@@ -425,12 +425,13 @@ MonoBehaviour:
   bulletSpeed: 10
   scrapsOnDeath: 100
   enemyBullets: 1
+  exitDamage: 5
   weapon: {fileID: 7081861906511249415, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
   currentMovementMode: 0
   trackingSpeed: 2
   trackingTarget: {fileID: 0}
   healthSlider: {fileID: 7978777310234598016}
-  exitDamage: 5
+  deathSound: {fileID: 0}
 --- !u!50 &852799699040492936
 Rigidbody2D:
   serializedVersion: 4

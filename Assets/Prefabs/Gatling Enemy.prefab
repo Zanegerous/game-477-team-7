@@ -431,6 +431,7 @@ MonoBehaviour:
   trackingSpeed: 0.7
   trackingTarget: {fileID: 0}
   healthSlider: {fileID: 7978777310234598016}
+  deathSound: {fileID: 0}
 --- !u!50 &852799699040492936
 Rigidbody2D:
   serializedVersion: 4

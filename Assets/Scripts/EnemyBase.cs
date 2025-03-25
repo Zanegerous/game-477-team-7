@@ -12,7 +12,6 @@ public class EnemyBase : MonoBehaviour
     // public float scoreValue; No longer needed due to scraps on death
     public int scrapsOnDeath;
     public bool enemyBullets;
-
     public float exitDamage;
 
 
@@ -27,6 +26,8 @@ public class EnemyBase : MonoBehaviour
     private gameHandler gameHandler;
     [Header("Health Slider")]
     public Slider healthSlider;
+    private AudioSource weaponSound;
+    public AudioSource deathSound;
 
 
     public enum MovementMode
@@ -41,12 +42,17 @@ public class EnemyBase : MonoBehaviour
         gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
         transform.position = new Vector3(12, Random.Range(-3f, 3f), 0);
         timeOfLastBullet = Time.time;
+        weaponSound = weapon.GetComponent<WeaponBase>().fireSound;
 
         trackingTarget = GameObject.FindGameObjectWithTag("Player");
 
         if (healthSlider != null)
         {
             healthSlider.maxValue = health;
+        }
+        if (weapon != null)
+        {
+
         }
     }
 
@@ -59,7 +65,8 @@ public class EnemyBase : MonoBehaviour
         moveMode();
 
         // Hurt Player and Delete Ship  
-        if (transform.position.x < -10f){
+        if (transform.position.x < -10f)
+        {
             trackingTarget.GetComponent<SpaceShip>().playerHealthBar.decrementHealthBar(exitDamage);
             Debug.Log(19911);
             Destroy(gameObject);
@@ -101,6 +108,7 @@ public class EnemyBase : MonoBehaviour
 
         if (Time.time > timeOfLastBullet + weaponBase.fireRate)
         {
+            weaponSound.Play();
             timeOfLastBullet = Time.time;
             GameObject newWeapon = Instantiate(weapon, transform.Find("EnemyBarrel").position, transform.Find("EnemyBarrel").rotation);
             newWeapon.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
@@ -113,7 +121,7 @@ public class EnemyBase : MonoBehaviour
     {
         WeaponBase collisonObject = collision.GetComponent<WeaponBase>();
         if (collisonObject != null && collisonObject.tag != "Enemy")
-        {   
+        {
             Destroy(collision.gameObject);
             health -= collisonObject.damage;
 
@@ -128,6 +136,7 @@ public class EnemyBase : MonoBehaviour
             {
                 gameHandler.shipScript.scraps += Mathf.RoundToInt(scrapsOnDeath * Random.Range(0.9f, 1.3f)); // give scraps
                 Debug.Log("SCRAPS DEATH");
+                // deathSound.PlayOneShot(deathSound.clip); not working as expected
                 Destroy(gameObject);
                 //GameWorld.Instance.AddToScore(scoreValue);
             }

@@ -19,6 +19,8 @@ public class WeaponBase : MonoBehaviour
     public GameObject trackingTarget;
     public float trackingSpeed;
 
+    [Header("Assets")]
+    public AudioSource fireSound;
 
     public enum MovementMode
     {
@@ -37,6 +39,7 @@ public class WeaponBase : MonoBehaviour
     {
         startingXPos = transform.position.x;
         direction = GenerateAngle();
+
 
         // if (isEnemy)
         //     movementSpeed = -movementSpeed;
@@ -100,8 +103,9 @@ public class WeaponBase : MonoBehaviour
     private void CheckPos()
     {
         if (Mathf.Abs(transform.position.x - startingXPos) > 20f) // if 20f units off left or right in your screen then delete
-        {   
-            if (gameObject.name != "Asteroid"){
+        {
+            if (gameObject.name != "Asteroid")
+            {
                 Debug.Log("ABS VAL DELETE");
                 Destroy(gameObject);
             }
