@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpaceShip : MonoBehaviour
 {
@@ -122,6 +123,7 @@ public class SpaceShip : MonoBehaviour
             if (playerHealthBar.fullHealth == 0f)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("GameOver");
                 //GameWorld.Instance.AddToScore(scoreValue);
             }
         }
