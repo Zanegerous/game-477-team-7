@@ -44,23 +44,22 @@ public class gameHandler : MonoBehaviour
 
     void checkInput()
     {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            QuitGame();
-
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab)) {
             ToggleCursor();
+        }
     }
 
     /////////////////////////////////////////////////////////////  
 
     void QuitGame()
-    {
+    {   // commented out because this functionality is going to be handled by pause UI and buttons
+        /*
         Application.Quit();
 
         #if UNITY_EDITOR
                 EditorApplication.isPlaying = false;
         #endif
+        */
     }
 
     void ToggleCursor()
