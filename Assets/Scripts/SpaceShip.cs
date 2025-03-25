@@ -114,9 +114,10 @@ public class SpaceShip : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         WeaponBase collisonObject = collision.GetComponent<WeaponBase>();
+
         if (collisonObject != null)
         {
-            playerHealthBar.decrementHealthBar();
+            playerHealthBar.decrementHealthBar(collisonObject.damage);
             Destroy(collision.gameObject);
             if (playerHealthBar.fullHealth == 0f)
             {

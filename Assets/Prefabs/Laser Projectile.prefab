@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806b0a9edbfe7f24fb05d19043c3a719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   movementSpeed: 10
   fireRate: 2
-  left: 0
+  spread: 0
 --- !u!50 &8456099063284431547
 Rigidbody2D:
   serializedVersion: 4

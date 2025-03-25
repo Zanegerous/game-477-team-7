@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 852799699040492936}
   - component: {fileID: 5153524239089305671}
   m_Layer: 0
-  m_Name: Laser Enemy
+  m_Name: Gatling Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,7 +398,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0.5529412, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.8356642, g: 1, b: 0.09119487, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -420,14 +420,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3572f7efad4112242a744643db727dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  speed: 4
-  bulletSpeed: 10
+  health: 10
+  speed: 0.5
+  bulletSpeed: 5
   scrapsOnDeath: 80
   enemyBullets: 1
-  weapon: {fileID: 7081861906511249415, guid: 73ff2c69dc9597844ae5f328fe7bba74, type: 3}
-  currentMovementMode: 0
-  trackingSpeed: 2
+  weapon: {fileID: 4135761292608624225, guid: ed04079f51d1c184f9db3a59a09ccc92, type: 3}
+  currentMovementMode: 1
+  trackingSpeed: 1
   trackingTarget: {fileID: 0}
   healthSlider: {fileID: 7978777310234598016}
 --- !u!50 &852799699040492936

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,22 @@ public class WeaponBase : MonoBehaviour
     public float movementSpeed;
     public float fireRate;
     public float spread;
+
+
     private Vector3 direction;
+
+    [Header("Weapon Modifiers")]
+    public MovementMode currentMovementMode;
+    public GameObject trackingTarget;
+    public float trackingSpeed;
+
+
+    public enum MovementMode
+    {
+        MoveForward,
+        TrackYPriority,
+        ConstantTracking
+    }
 
 
     private float startingXPos; // Track the initial position
@@ -30,14 +46,48 @@ public class WeaponBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * movementSpeed * Time.deltaTime;
+        movement();
         CheckPos();
     }
 
+    public void movement()
+    {
+        switch (currentMovementMode)
+        {
+            case MovementMode.MoveForward:
+                moveForward();
+                break;
+            case MovementMode.TrackYPriority:
+                trackPlayerPrioritizeY();
+                break;
+            case MovementMode.ConstantTracking:
+                trackPlayerConstant();
+                break;
+        }
+    }
 
-    private Vector3 GenerateAngle(){
-        float spreadOffset = Random.Range(-spread, spread);
-        float fireAngle =  (transform.rotation.eulerAngles.z + spreadOffset) * Mathf.Deg2Rad;
+    private void trackPlayerPrioritizeY()
+    {
+        Vector3 directionToPlayer = new Vector3(movementSpeed * Time.deltaTime, trackingTarget.transform.position.y - transform.position.y, 0).normalized;
+        transform.position += directionToPlayer * trackingSpeed * Time.deltaTime;
+    }
+
+    private void trackPlayerConstant()
+    {
+
+        Vector3 directionToPlayer = trackingTarget.transform.position - transform.position;
+        transform.position += directionToPlayer.normalized * trackingSpeed * Time.deltaTime + new Vector3(movementSpeed * Time.deltaTime, 0, 0);
+    }
+
+    private void moveForward()
+    {
+        transform.position += direction * movementSpeed * Time.deltaTime;
+    }
+
+    private Vector3 GenerateAngle()
+    {
+        float spreadOffset = UnityEngine.Random.Range(-spread, spread);
+        float fireAngle = (transform.rotation.eulerAngles.z + spreadOffset) * Mathf.Deg2Rad;
         Vector3 result = new Vector3(
             Mathf.Cos(fireAngle),
             Mathf.Sin(fireAngle),

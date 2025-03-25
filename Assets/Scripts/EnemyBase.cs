@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -8,16 +9,30 @@ public class EnemyBase : MonoBehaviour
     public float health;
     public float speed;
     public float bulletSpeed;
-    public float scoreValue;
+    // public float scoreValue; No longer needed due to scraps on death
     public int scrapsOnDeath;
     public bool enemyBullets;
+
+
 
 
     [Header("Weapon")]
     public GameObject weapon;
     private float timeOfLastBullet;
+    public MovementMode currentMovementMode;
+    public float trackingSpeed;
+    public GameObject trackingTarget;
 
     private gameHandler gameHandler;
+    [Header("Health Slider")]
+    public Slider healthSlider;
+
+
+    public enum MovementMode
+    {
+        MoveForward,
+        TrackYPriority,
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,20 +40,58 @@ public class EnemyBase : MonoBehaviour
         gameHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameHandler>();
         transform.position = new Vector3(12, Random.Range(-3f, 3f), 0);
         timeOfLastBullet = Time.time;
+
+        trackingTarget = GameObject.FindGameObjectWithTag("Player");
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = health;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        fireWeapon(weapon);
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (weapon != null) // Means no weapon is required
+        {
+            fireWeapon(weapon);
+        }
+
+        moveMode();
 
         // Hurt Player and Delete Ship  
         if (transform.position.x < -10f)
             Destroy(gameObject);
-        
+
 
     }
+
+    private void moveMode()
+    {
+        switch (currentMovementMode)
+        {
+            case MovementMode.MoveForward:
+                moveForward();
+                break;
+            case MovementMode.TrackYPriority:
+                trackPlayerPrioritizeY();
+                break;
+        }
+    }
+
+    private void trackPlayerPrioritizeY()
+    {
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
+
+        float deltaY = trackingTarget.transform.position.y - transform.position.y;
+        transform.position += new Vector3(0, deltaY * trackingSpeed * Time.deltaTime, 0);
+    }
+
+    private void moveForward()
+    {
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
+    }
+
 
     public void fireWeapon(GameObject weapon)
     {
@@ -51,6 +104,7 @@ public class EnemyBase : MonoBehaviour
             newWeapon.GetComponent<WeaponBase>().movementSpeed = bulletSpeed;
             if (enemyBullets) newWeapon.tag = "Enemy";
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,11 +114,17 @@ public class EnemyBase : MonoBehaviour
         {
             Destroy(collision.gameObject);
             health -= collisonObject.damage;
+
+            if (healthSlider != null)
+            {
+                healthSlider.value = health;
+            }
+
             if (health <= 0)
             {
                 Destroy(gameObject);
                 gameHandler.shipScript.scraps += Mathf.RoundToInt(scrapsOnDeath * Random.Range(0.9f, 1.3f));
-                
+
                 //GameWorld.Instance.AddToScore(scoreValue);
             }
         }

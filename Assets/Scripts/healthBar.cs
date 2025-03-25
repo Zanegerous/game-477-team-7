@@ -12,17 +12,19 @@ public class healthBar : MonoBehaviour
     void Start()
     {
         fullHealth = 1f;
-        incrementAmount = 0.1f;
+        incrementAmount = 0.01f;
         barspriteTransform = transform;
     }
 
-    public void incrementHealthBar() {
-        fullHealth = Mathf.Min(fullHealth + incrementAmount, 1f);
+    public void incrementHealthBar(float value)
+    {
+        fullHealth = Mathf.Min(fullHealth + (incrementAmount * value), 1f);
         barspriteTransform.localScale = new Vector3(fullHealth, barspriteTransform.localScale.y, barspriteTransform.localScale.z);
     }
 
-    public void decrementHealthBar() {
-        fullHealth = Mathf.Max(fullHealth - incrementAmount, 0f);
+    public void decrementHealthBar(float damage)
+    {
+        fullHealth = Mathf.Max(fullHealth - (incrementAmount * damage), 0f);
         barspriteTransform.localScale = new Vector3(fullHealth, barspriteTransform.localScale.y, barspriteTransform.localScale.z);
     }
 }
